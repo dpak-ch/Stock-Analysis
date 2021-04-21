@@ -14,4 +14,4 @@ The starting price of the stock is noted at every new trigger of the inner loop.
 
 ![VBA_Pre-Refactor_2018](https://user-images.githubusercontent.com/81054290/115632701-ea6dec80-a2cd-11eb-9a02-9bc5813dd703.png)
 
-It can be seen from the images that 2017 was a much better year for green energy stocks from a return perspective. While the trading volume was roughly the same in both years, the stocks had abysmal returns in 2018. The run times for both years is rouoghly the same at ~0.74 seconds.
+It can be seen from the images that 2017 was a much better year for green energy stocks from a return perspective. While trading volume was roughly the same in both years, most of the stocks had abysmal returns in 2018. The run times for both years is roughly the same at ~0.74 seconds.
