@@ -10,8 +10,8 @@ The original script uses a nested For statement to accomplish the task of calcul
 
 The starting price of the stock is noted at every new trigger of the inner loop. As the inner loop completes cycling through all the rows for the ticker symbol in the outer loop, the ending price for the ticker is captured. The images below show the stock performance for  two years (2017 and 2018) and the time it took for each of the runs:
 
-![VBA_Pre-Refactor_2017](https://user-images.githubusercontent.com/81054290/115631583-babde500-a2cb-11eb-9e87-bf153ae09b30.PNG) 
+![VBA_Pre-Refactor_2017](https://user-images.githubusercontent.com/81054290/115632693-e641cf00-a2cd-11eb-9def-91e50d3e0b6a.PNG)
 
-![VBA_Pre-Refactor_2018](https://user-images.githubusercontent.com/81054290/115631599-beea0280-a2cb-11eb-85a2-e84d794ee995.png)
+![VBA_Pre-Refactor_2018](https://user-images.githubusercontent.com/81054290/115632701-ea6dec80-a2cd-11eb-9a02-9bc5813dd703.png)
 
-
+It can be seen from the images that 2017 was a much better year for green energy stocks from a return perspective. While the trading volume was roughly the same in both years, the stocks had abysmal returns in 2018. The run times for both years is rouoghly the same at ~0.74 seconds.
