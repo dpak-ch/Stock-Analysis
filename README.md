@@ -2,6 +2,7 @@
 
 ## Contents
 * [Overview](#overview-of-the-project)
+* [Referenced Files and Modules](#files-and-modules)
 * [Results](#results)
 * [Limitations](#limitations-of-the-refactored-code)
 * [Additional Improvements](#additional-ways-to-improve-code)
@@ -9,6 +10,12 @@
 
 ## Overview of the Project
 The purpose of this project is to refactor a piece of stock analysis code developed using VBA. Refactoring involves improving the code to make it more simple, readable, efficient, and consequently to remove any potential bugs. The refactored code in this project is expected to perform the same function of the original code, albeit at a faster rate.
+
+## Files and Modules
+1. VBA_Challenge.xlsm - Contains raw data for clean energy stocks and a results page with performance analysis. The Visual Basic editor also contains the modules with code.
+2. Module "Stock_Analysis" - Containsthe original code for stock performance analysis
+3. Module "Challenge" - Contains refactored code for stock performance analysis
+4. Module "Challenge_DC" - Contains refactored code with additional improvements
 
 ## Results
 The code calculates stock trading volume and captures opening and closing price for several stocks. The data is provided for two years (2017 and 2018) in separate spreadsheets. 
