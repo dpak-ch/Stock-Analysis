@@ -1,8 +1,11 @@
 # Stock-Analysis
 
 [Overview](#overview-of-the-project)
+
 [Results](#results)
+
 [Limitations](#limitations-of-the-refactored-code)
+
 [Additional Improvements](#additional-ways-to-improve-code)
 
 ## Overview of the Project
@@ -59,4 +62,5 @@ This additional line provides ~30% savings in run time by instructing Excel not 
 
 ![VBA_Challenge_2017_DC](https://user-images.githubusercontent.com/81054290/115784301-886fbe80-a383-11eb-88b1-1616ff9ed318.png)
 
-![VBA_Challenge_2018](https://user-images.githubusercontent.com/81054290/115784309-8b6aaf00-a383-11eb-9f99-d46f2594f271.png)
+![VBA_Challenge_2018_DC](https://user-images.githubusercontent.com/81054290/115785147-b4d80a80-a384-11eb-84f1-6df519a64816.png)
+
