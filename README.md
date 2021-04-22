@@ -58,7 +58,11 @@ The refactored code is optimized for the task it is expected to perform. The tim
 
 ![Refactored Code - ScreenUpdating Off](https://user-images.githubusercontent.com/81054290/115783580-a557c200-a382-11eb-8c87-38e9b453de9a.png)
 
-This additional line provides ~30% savings in run time by instructing Excel not to visibly update the spreadsheet with each change (see images below). Savings can be more dramatic with larger datasets.
+Another small improvement was made by moving the "Returns" formatting code to the same loop where returns are calcualted as shown below:
+
+![VBA_Challenge Script_Improved](https://user-images.githubusercontent.com/81054290/115793462-c5db4880-a391-11eb-9155-38845af6ff6a.png)
+
+The combined improvements provide ~30% savings in run time by improving code efficieny and instructing Excel not to visibly update the spreadsheet with each change. Savings can be more dramatic with larger datasets.
 
 ![VBA_Challenge_2017_DC](https://user-images.githubusercontent.com/81054290/115784301-886fbe80-a383-11eb-88b1-1616ff9ed318.png)
 
