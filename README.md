@@ -1,4 +1,4 @@
-# Stock-Analysis
+# Stock Analysis Using VBA
 
 ## Contents
 * [Overview](#overview-of-the-project)
@@ -7,9 +7,11 @@
 * [Additional Improvements](#additional-ways-to-improve-code)
 
 ## Overview of the Project
-The purpose of this project is to refactor the code that was developed during the course of the module. Refactoring involves improving the code to make it more simple, readable, efficient, and consequently to remove any potential bugs. The refactored code in this project is expected to perform the same function at a faster rate.
+The purpose of this project is to refactor a piece of stock analysis code developed using VBA. Refactoring involves improving the code to make it more simple, readable, efficient, and consequently to remove any potential bugs. The refactored code in this project is expected to perform the same function of the original code, albeit at a faster rate.
 
 ## Results
+The code calculates stock trading volume and captures opening and closing price for several stocks. The data is provided for two years (2017 and 2018) in separate spreadsheets. 
+
 ### Original Script
 The original script uses a nested For statement to accomplish the task of calculating total volume over the course of a given year. The outer loop cycles through the 12 ticker symbols while the innter loop cycles through all the rows checking for the specific ticker symbol. The image below shows the structure of the loops:
 
