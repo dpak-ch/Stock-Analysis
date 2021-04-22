@@ -14,4 +14,16 @@ The starting price of the stock is noted at every new trigger of the inner loop.
 
 ![VBA_Pre-Refactor_2018](https://user-images.githubusercontent.com/81054290/115632701-ea6dec80-a2cd-11eb-9a02-9bc5813dd703.png)
 
-It can be seen from the images that 2017 was a much better year for green energy stocks from a return perspective. While trading volume was roughly the same in both years, most of the stocks had abysmal returns in 2018. The run times for both years is roughly the same at ~0.74 seconds.
+It can be seen from the images that the green energy stocks had much better returbs in 2017. While trading volume was roughly the same in both years, most of the stocks had abysmal returns in 2018. The script run times for both years is roughly the same at ~0.7 seconds.
+
+### Modified Script - Challenge
+For this exercise, I followed the suggested steps to refactor the code. The original nested loop has now been replaced by two separate loops as shown below:
+
+![Challenge Script - Individual Loops_2](https://user-images.githubusercontent.com/81054290/115775893-12fef080-a379-11eb-8dae-27433aba92e9.png)
+
+The first loop initializes the TickerVolumes aray to zero and the subsequent loop goes through every row in the spreadsheet to calculate total volume for each ticker and capture opening and closing prices. While the stock performance data in the refactored code remained unchanged, run time decreased by 84% from 0.7 to 0.1 seconds. The images below show stock performance and refactored code run times for 2017 and 2018.
+
+
+
+
+
