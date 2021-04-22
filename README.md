@@ -37,7 +37,7 @@ The first loop initializes the TickerVolumes array to zero. The subsequent loop 
 ![VBA_Challenge_2018](https://user-images.githubusercontent.com/81054290/115777807-5e1a0300-a37b-11eb-8a32-d026b4391a0c.png)
 
 ## Limitations of the Refactored code
-The refactored code as shown above has accomplished the two main objectives: maintain functionality of the original code, and reduce run time. However, the code has an inherent limitation not present in the original code. The refactored code captures volume and price data for each ticker symbol in the spreadsheet based on symbol change, without regard to data in the Tickers array. It then assigned the captured data to the TickerVolumes array for each increment of TickerIndex. The process here assumes that the Tickers array is initialized perfectly in line with the ticker data in the spreadsheet. See image below:
+The refactored code has accomplished the two main objectives: maintain functionality of the original code, and reduce run time. However, the code has an inherent limitation not present in the original code. The refactored code captures volume and price data for each ticker symbol in the spreadsheet based on symbol change, without regard to order of data in the Tickers array. It then assigns the captured data to the TickerVolumes array for each increment of TickerIndex. The process here assumes that the Tickers array is initialized perfectly in line with the ticker data in the spreadsheet. See image below:
 
 ![Refactored Code Ticker](https://user-images.githubusercontent.com/81054290/115779486-aafed900-a37d-11eb-8c9b-1683bb6dc53e.png)
 
