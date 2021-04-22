@@ -21,9 +21,36 @@ For this exercise, I followed the suggested steps to refactor the code. The orig
 
 ![Challenge Script - Individual Loops_2](https://user-images.githubusercontent.com/81054290/115775893-12fef080-a379-11eb-8dae-27433aba92e9.png)
 
-The first loop initializes the TickerVolumes aray to zero and the subsequent loop goes through every row in the spreadsheet to calculate total volume for each ticker and capture opening and closing prices. While the stock performance data in the refactored code remained unchanged, run time decreased by 84% from 0.7 to 0.1 seconds. The images below show stock performance and refactored code run times for 2017 and 2018.
+The first loop initializes the TickerVolumes array to zero. The subsequent loop goes through every row in the spreadsheet to calculate total volume for each ticker, and capture opening and closing prices. While the stock performance data in the refactored code remained unchanged, run time decreased by 84% from 0.7 to 0.1 seconds. The images below show stock performance and refactored code run times for 2017 and 2018:
 
+![VBA_Challenge_2017](https://user-images.githubusercontent.com/81054290/115777917-83a70c80-a37b-11eb-9f29-75af30008238.png)
 
+![VBA_Challenge_2018](https://user-images.githubusercontent.com/81054290/115777807-5e1a0300-a37b-11eb-8a32-d026b4391a0c.png)
 
+### Limitations of the Refactored code
+The refactored code as shown above has accomplished the two main objectives: maintain functionality of the original code, and reduce run time. However, the code has an inherent limitation not present in the original code. The refactored code captures volume and price data for each ticker symbol in the spreadsheet based on symbol change, without regard to data in the Tickers array. It then assigned the captured data to the TickerVolumes array for each increment of TickerIndex. The process here assumes that the Tickers array is initialized perfectly in line with the ticker data in the spreadsheet. See image below:
 
+![Refactored Code Ticker](https://user-images.githubusercontent.com/81054290/115779486-aafed900-a37d-11eb-8c9b-1683bb6dc53e.png)
 
+In the image above, if the user accidentally assigned tickers to the wrong array position (e.g. ticker CSIQ in position 0), then the associated volumes and prices would be wrong also. The original code however determines the stock performance variables by deliberately matching tickers in the spreadsheet to the "Tickers" array, and hence avoids this issue. 
+
+### Additional Ways to Improve Code
+#### Original Script
+The key limitation of the original script is that the inner loop runs through all the rows 12 times, without regard to the ticker symbol being analyzed. Some savings in time can be achieved if the inner loop is exited after a ticker match is obtained and the performance variables have been captured, as shown below:
+
+![Original Script - Exit Inner Loop Early](https://user-images.githubusercontent.com/81054290/115782294-1eeeb080-a381-11eb-8f0d-b6ab3b6c689f.png)
+
+![Original Script_Modified_Faster Run Time](https://user-images.githubusercontent.com/81054290/115782507-5c533e00-a381-11eb-9fd3-0bdc44f1f456.png)
+
+While slower than the refactored code, the modified script is ~40% faster than the original script.
+
+#### Refactored Code
+The refactored code is optimized for the task it is expected to perform. The time taken for the code to run is already low at 0.1 seconds. However, the code can be made more efficient by turning off "Screen Updating" as shown below:
+
+![Refactored Code - ScreenUpdating Off](https://user-images.githubusercontent.com/81054290/115783580-a557c200-a382-11eb-8c87-38e9b453de9a.png)
+
+This additional line provides ~30% savings in run time by instructing Excel not to visibly update the spreadsheet with each change (see images below). Savings can be more dramatic with larger datasets.
+
+![VBA_Challenge_2017_DC](https://user-images.githubusercontent.com/81054290/115784301-886fbe80-a383-11eb-88b1-1616ff9ed318.png)
+
+![VBA_Challenge_2018](https://user-images.githubusercontent.com/81054290/115784309-8b6aaf00-a383-11eb-9f99-d46f2594f271.png)
