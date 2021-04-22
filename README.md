@@ -13,45 +13,45 @@ The purpose of this project is to refactor a piece of stock analysis code develo
 The code calculates stock trading volume and captures opening and closing price for several stocks. The data is provided for two years (2017 and 2018) in separate spreadsheets. 
 
 ### Original Script
-The original script uses a nested For statement to accomplish the task of calculating total volume over the course of a given year. The outer loop cycles through the 12 ticker symbols while the innter loop cycles through all the rows checking for the specific ticker symbol. The image below shows the structure of the loops:
+The original script uses a nested For statement to accomplish the task of calculating total volume over the course of a given year. The outer loop cycles through the 12 ticker symbols while the inner loop cycles through all trading data, looking for the specific ticker symbol. The image below shows the structure of the loops in vba:
 
 ![Original Script - Inner-Outer Loop](https://user-images.githubusercontent.com/81054290/115630114-18046700-a2c9-11eb-92e3-d570055e7bc4.png)
 
-The starting price of the stock is noted at every new trigger of the inner loop. As the inner loop completes cycling through all the rows for the ticker symbol in the outer loop, the ending price for the ticker is captured. The images below show the stock performance for  two years (2017 and 2018) and the time it took for each of the runs:
+The starting price of the stock is noted at every new trigger of the inner loop. As the inner loop completes cycling through all trading data for the ticker symbol in the outer loop, the ending price for the ticker is captured. The trading volume is updated at each inner loop increment. The images below show the stock performance for two years (2017 and 2018), and the time it took for each of the runs:
 
 ![VBA_Pre-Refactor_2017](https://user-images.githubusercontent.com/81054290/115632693-e641cf00-a2cd-11eb-9def-91e50d3e0b6a.PNG)
 
 ![VBA_Pre-Refactor_2018](https://user-images.githubusercontent.com/81054290/115632701-ea6dec80-a2cd-11eb-9a02-9bc5813dd703.png)
 
-It can be seen from the images that the green energy stocks had much better returbs in 2017. While trading volume was roughly the same in both years, most of the stocks had abysmal returns in 2018. The script run times for both years is roughly the same at ~0.7 seconds.
+It can be seen from the images that the green energy stocks had much better returns in 2017. While trading volume was roughly the same in both years, most of the stocks had abysmal returns in 2018. The script run times for both years is roughly the same at ~0.7 seconds.
 
-### Modified Script - Challenge
+### Modified Script for Faster Run Times
 For this exercise, I followed the suggested steps to refactor the code. The original nested loop has now been replaced by two separate loops as shown below:
 
 ![Challenge Script - Individual Loops_2](https://user-images.githubusercontent.com/81054290/115775893-12fef080-a379-11eb-8dae-27433aba92e9.png)
 
-The first loop initializes the TickerVolumes array to zero. The subsequent loop goes through every row in the spreadsheet to calculate total volume for each ticker, and capture opening and closing prices. While the stock performance data in the refactored code remained unchanged, run time decreased by 84% from 0.7 to 0.1 seconds. The images below show stock performance and refactored code run times for 2017 and 2018:
+The first loop initializes the TickerVolumes array to zero. The subsequent loop cycles through all trading data to calculate total volume for each ticker, and capture opening and closing prices. With the modified code, stock performance data remains unchanged while run time decreases by 84% from 0.7 to 0.1 seconds. The images below show stock performance and refactored code run times for 2017 and 2018:
 
 ![VBA_Challenge_2017](https://user-images.githubusercontent.com/81054290/115777917-83a70c80-a37b-11eb-9f29-75af30008238.png)
 
 ![VBA_Challenge_2018](https://user-images.githubusercontent.com/81054290/115777807-5e1a0300-a37b-11eb-8a32-d026b4391a0c.png)
 
 ## Limitations of the Refactored code
-The refactored code has accomplished the two main objectives: maintain functionality of the original code, and reduce run time. However, the code has an inherent limitation not present in the original code. The refactored code captures volume and price data for each ticker symbol in the spreadsheet based on symbol change, without regard to order of data in the Tickers array. It then assigns the captured data to the TickerVolumes array for each increment of TickerIndex. The process here assumes that the Tickers array is initialized perfectly in line with the ticker data in the spreadsheet. See image below:
+The refactored code has accomplished the two main objectives: maintain functionality of the original code, and reduce run time. However, there is an inherent limitation not present in the original code. The refactored code assigns volume and price data to each index in the Tickers array, without checking for a ticker symbol match between the array and the spreadsheet data. The process here assumes that the Tickers array follows the order in which tickers are organized in the spreadsheet. See image below:
 
 ![Refactored Code Ticker](https://user-images.githubusercontent.com/81054290/115779486-aafed900-a37d-11eb-8c9b-1683bb6dc53e.png)
 
-In the image above, if the user accidentally assigned tickers to the wrong array position (e.g. ticker CSIQ in position 0), then the associated volumes and prices would be wrong also. The original code however determines the stock performance variables by deliberately matching tickers in the spreadsheet to the "Tickers" array, and hence avoids this issue. 
+In the image above, if the user accidentally assigned tickers to the wrong array position (e.g. ticker CSIQ in position 0), then the associated volumes and prices would be wrong also. In contrast, the original code determines stock performance variables by deliberately matching ticker symbols in the spreadsheet to the Tickers array, and is hence more foolproof.
 
 ## Additional Ways to Improve Code
 ### Original Script
-The key limitation of the original script is that the inner loop runs through all the rows 12 times, without regard to the ticker symbol being analyzed. Some savings in time can be achieved if the inner loop is exited after a ticker match is obtained and the performance variables have been captured, as shown below:
+A key limitation of the original script is that the inner loop runs through all the trading data 12 times, without regard to the ticker symbol being analyzed. Some savings in time can be achieved if the inner loop is exited after a ticker match is obtained and the performance variables have been captured, as shown below:
 
 ![Original Script - Exit Inner Loop Early](https://user-images.githubusercontent.com/81054290/115782294-1eeeb080-a381-11eb-8f0d-b6ab3b6c689f.png)
 
 ![Original Script_Modified_Faster Run Time](https://user-images.githubusercontent.com/81054290/115782507-5c533e00-a381-11eb-9fd3-0bdc44f1f456.png)
 
-While slower than the refactored code, the modified script is ~40% faster than the original script.
+While slower than the refactored code, the modified script is ~40% faster than the original script. This code is still inefficient, as the time taken to extract performance data for each subsequent ticker is higher than the previous one.
 
 ### Refactored Code
 The refactored code is optimized for the task it is expected to perform. The time taken for the code to run is already low at 0.1 seconds. However, the code can be made more efficient by turning off "Screen Updating" as shown below:
